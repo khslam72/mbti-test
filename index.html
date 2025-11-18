@@ -1,0 +1,333 @@
+<div id="pro-test-wrapper">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        :root {
+            --primary-color: #6c5ce7; /* 메인 테마 컬러 (보라색) */
+            --secondary-color: #a29bfe;
+            --bg-color: #fdfdfd;
+            --text-color: #2d3436;
+            --bar-bg: #dfe6e9;
+        }
+
+        #pro-test-wrapper {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            min-height: 700px; /* 광고 포함 넉넉한 높이 */
+            position: relative;
+        }
+
+        /* 애니메이션 */
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 화면 공통 */
+        .screen { display: none; }
+        .screen.active { display: block; }
+
+        /* 1. 시작 화면 */
+        .start-screen { text-align: center; padding-top: 20px; }
+        .main-img { width: 100%; max-width: 320px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .start-title { font-size: 26px; font-weight: 800; margin-bottom: 10px; color: var(--text-color); line-height: 1.3; }
+        .start-desc { font-size: 16px; color: #636e72; margin-bottom: 30px; line-height: 1.6; }
+
+        /* 2. 퀴즈 화면 */
+        .quiz-screen { padding: 10px; }
+        .progress-container { width: 100%; height: 8px; background-color: var(--bar-bg); border-radius: 10px; margin-bottom: 40px; overflow: hidden; }
+        .progress-bar { height: 100%; background-color: var(--primary-color); width: 0%; transition: width 0.3s ease; }
+        
+        .question-count { color: var(--primary-color); font-weight: bold; font-size: 14px; margin-bottom: 10px; display: block; }
+        .question-text { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 40px; min-height: 66px; word-break: keep-all; line-height: 1.4; }
+        
+        .answer-btn {
+            display: block;
+            width: 100%;
+            padding: 18px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #eff1f3;
+            border-radius: 16px;
+            background: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center; /* 모바일 가독성 위해 중앙 정렬 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .answer-btn:hover, .answer-btn:active {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(108, 92, 231, 0.2);
+        }
+
+        /* 3. 로딩 화면 */
+        .loading-screen { text-align: center; padding-top: 80px; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #eee; border-top-color: var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* 4. 결과 화면 */
+        .result-screen { text-align: center; }
+        .result-subtitle { font-size: 16px; color: var(--primary-color); font-weight: 700; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; }
+        .result-name { font-size: 28px; font-weight: 900; margin-bottom: 20px; color: #2d3436; line-height: 1.3; }
+        .result-img { width: 100%; max-width: 350px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        
+        .desc-box { background: #f8f9fa; padding: 25px; border-radius: 15px; text-align: left; margin-bottom: 30px; line-height: 1.7; font-size: 15px; color: #444; border: 1px solid #eee; }
+        
+        .match-box { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 30px; }
+        .match-card { flex: 1; background: #fff; border: 2px solid #f1f2f6; padding: 15px 5px; border-radius: 12px; }
+        .match-title { font-size: 12px; color: #888; display: block; margin-bottom: 5px; }
+        .match-mbti { font-weight: 800; font-size: 18px; color: #2d3436; }
+
+        /* 버튼 공통 */
+        .btn-primary {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            transition: transform 0.2s;
+            width: 80%;
+            max-width: 320px;
+            margin-bottom: 15px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); }
+        
+        .share-btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .btn-share { padding: 10px 20px; border-radius: 30px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 5px; color: #555; transition: all 0.2s; }
+        .btn-share:hover { background: #f1f2f6; }
+
+        /* 광고 영역 가이드 (실제 적용시엔 background 색상 빼셔도 됩니다) */
+        .ad-area { 
+            width: 100%; 
+            background: #f0f0f0; /* 광고 영역 확인용 회색 배경 */
+            min-height: 250px;   /* 광고 들어갈 높이 확보 */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 30px 0; 
+            border-radius: 10px;
+            color: #aaa;
+            font-size: 12px;
+        }
+    </style>
+
+    <div class="ad-area">
+        <p>광고 영역 (상단)</p>
+    </div>
+
+    <div class="screen start-screen active">
+        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="MBTI Main" class="main-img">
+        <h1 class="start-title">🇰🇷 한국인 맞춤<br>소름 돋는 성향 테스트</h1>
+        <p class="start-desc">AI도 놀란 정확도!<br>나의 진짜 성격과 숨겨진 능력을 알아보세요.</p>
+        <button class="btn-primary" onclick="startQuiz()">테스트 시작하기</button>
+        <div style="font-size:12px; color:#999; margin-top:10px;">참여자 수: 1,240,392명</div>
+    </div>
+
+    <div class="screen quiz-screen">
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <span class="question-count">1 / 24</span>
+        <div class="question-text fade-in"></div>
+        <div class="answer-box fade-in">
+            </div>
+    </div>
+
+    <div class="screen loading-screen">
+        <div class="spinner"></div>
+        <h3 style="font-size:20px; font-weight:bold; margin-bottom:10px;">결과 분석 중...</h3>
+        <p style="color:#666;">당신의 성향 데이터를<br>정밀 분석하고 있습니다.</p>
+    </div>
+
+    <div class="screen result-screen">
+        <p class="result-subtitle">나의 성향 유형은?</p>
+        <h2 class="result-name"></h2>
+        
+        <img id="result-img-placeholder" src="" class="result-img fade-in">
+        
+        <div class="desc-box"></div>
+        
+        <div class="match-box">
+            <div class="match-card">
+                <span class="match-title">환상의 케미 ❤️</span>
+                <div class="match-mbti" id="best-match"></div>
+            </div>
+            <div class="match-card">
+                <span class="match-title">환장의 파국 💔</span>
+                <div class="match-mbti" id="worst-match"></div>
+            </div>
+        </div>
+
+        <div class="ad-area">
+            <p>광고 영역 (하단)</p>
+        </div>
+
+        <button class="btn-primary" onclick="location.reload()">테스트 다시하기</button>
+        
+        <div class="share-btn-group">
+            <button class="btn-share" onclick="copyLink()">🔗 링크 복사</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // ───────────────────────────────────────────
+    // 1. 질문 데이터 (24문항 황금 밸런스)
+    // ───────────────────────────────────────────
+    const questions = [
+        { q: "드디어 꿀 같은 주말! 나의 계획은?", a: "집 밖은 위험해. 침대와 한 몸이 되어 넷플릭스 정주행.", b: "오랜만에 친구들 만나서 수다 떨고 에너지 충전!", type: "IE" },
+        { q: "비행기 이륙 직전, 창밖을 보며 하는 생각은?", a: "와, 뜬다. 저 건물들 되게 작아 보이네.", b: "이 쇳덩이가 어떻게 뜨지? 추락하면 비상구는 어디지?", type: "SN" },
+        { q: "친구가 '나 우울해서 화분 샀어'라고 말했다. 나의 반응은?", a: "우울했구나.. 무슨 일 있어? (감정 케어)", b: "오 무슨 화분? 얼마 주고 샀어? (사실 확인)", type: "FT" },
+        { q: "여행 갈 때 나의 계획표 스타일은?", a: "엑셀 파일에 분 단위 동선과 맛집 1,2,3안 정리.", b: "일단 숙소랑 비행기만 예약. 나머지는 가서 생각한다.", type: "JP" },
+        { q: "자주 마주치는 이웃과 엘리베이터에 단둘이 탔다.", a: "(어색..) 핸드폰을 보거나 층수만 쳐다본다.", b: "안녕하세요~ 날씨 춥죠? (자연스럽게 스몰톡)", type: "IE" },
+        { q: "멍 때릴 때 내 머릿속 상태는?", a: "오늘 저녁 뭐 먹지? 내일 뭐 입지? (현실적 고민)", b: "내가 만약 초능력을 갖게 된다면? 좀비가 나타나면? (망상)", type: "SN" },
+        { q: "가벼운 차 접촉사고가 났다. 친구에게 전화를 걸었을 때 듣고 싶은 말은?", a: "헐 다친 데는 없어? 많이 놀랐겠다ㅠㅠ", b: "보험사는 불렀어? 과실 비율은 어떻게 된대?", type: "FT" },
+        { q: "마감 기한이 1주일 남은 과제/업무, 나는?", a: "미리미리 해서 끝내놔야 마음이 편하다.", b: "아직 1주일이나 남았네? 일단 좀 놀다가 막판 스퍼트.", type: "JP" },
+        { q: "사람 많은 시끌벅적한 모임, 2시간이 지났다.", a: "점점 기가 빨리고 집에 가고 싶다.", b: "이제 슬슬 흥이 오르는데? 2차 가자!", type: "IE" },
+        { q: "새로운 요리를 시도할 때 나는?", a: "블로그 레시피 정독하고 계량스푼으로 정확하게.", b: "대충 이런 느낌이지? 감으로 재료 투하.", type: "SN" },
+        { q: "고민 상담을 해줄 때 나는?", a: "그 사람의 입장에 이입해서 같이 화내주거나 슬퍼해준다.", b: "현실적으로 해결할 수 있는 가장 효율적인 방법을 제시한다.", type: "FT" },
+        { q: "맛집에 갔는데 웨이팅이 2시간이라고 한다.", a: "아.. 계획 꼬이는데. 미리 찾아둔 근처 다른 식당으로 간다.", b: "헐 대박. 맛집인가 봐. 딴 데 가면서 구경하지 뭐.", type: "JP" },
+        { q: "마음에 드는 이성이 생겼다. 나의 대시 스타일은?", a: "그 사람이 나에게 말 걸어줄 때까지 주변을 맴돈다.", b: "직진! 연락처 물어보고 적극적으로 표현한다.", type: "IE" },
+        { q: "노래를 들을 때 더 꽂히는 부분은?", a: "귀에 꽂히는 멜로디와 비트, 가수의 목소리.", b: "가사가 담고 있는 은유적인 의미나 감성.", type: "SN" },
+        { q: "슬픈 영화를 보고 눈물을 흘린다면 그 이유는?", a: "주인공이 너무 불쌍해서 (감정 이입)", b: "저 상황이 너무 억울하고 답답해서 (상황 분석)", type: "FT" },
+        { q: "내 스마트폰 홈 화면의 상태는?", a: "용도별로 폴더 정리 깔끔, 알림 배지 '0' 유지.", b: "어디 있는지 나만 아는 규칙으로 나열 (알림 999+)", type: "JP" },
+        { q: "대화할 때 나는 주로?", a: "상대방의 말을 들어주고 리액션해 주는 게 편하다.", b: "내 이야기를 하는 게 좋고 대화를 주도하는 편이다.", type: "IE" },
+        { q: "새로 산 전자기기, 조립 가구. 설명서는?", a: "1번부터 순서대로 꼼꼼히 읽고 시작한다.", b: "일단 그림만 대충 보고 조립하다가 막히면 본다.", type: "SN" },
+        { q: "부탁을 거절해야 할 때 나는?", a: "상처받을까 봐 돌려 말하거나 거짓말을 보탠다.", b: "안 되는 이유를 명확하게 설명하고 거절한다.", type: "FT" },
+        { q: "친구가 약속 시간 10분 전에 '30분 늦을 듯' 카톡을 보냈다.", a: "화가 난다. 내 시간 계획이 다 틀어졌다.", b: "오케이~ 그럼 그동안 서점이나 구경해야지.", type: "JP" },
+        { q: "새로운 팀 프로젝트, 조장을 뽑아야 한다.", a: "제발 나만 아니기를.. 눈을 피한다.", b: "아무도 안 하면 내가 한다. (답답한 건 못 참음)", type: "IE" },
+        { q: "내가 더 자주 하는 생각은?", a: "그때 내가 왜 그랬지? (과거의 경험)", b: "앞으로 세상이 어떻게 변할까? (미래의 가능성)", type: "SN" },
+        { q: "나에게 더 기분 좋은 칭찬은?", a: "'너 진짜 착하다', '센스 있다' (인성/태도)", b: "'일 진짜 잘한다', '똑똑하다' (능력/성과)", type: "FT" },
+        { q: "점심 메뉴를 고를 때 나는?", a: "어제부터 먹고 싶었던 메뉴가 확고하다.", b: "그냥 가서 땡기는 거 먹거나 남들이 먹자는 거 먹는다.", type: "JP" }
+    ];
+
+    // ───────────────────────────────────────────
+    // 2. 결과 데이터 (이미지 URL은 꼭 교체해주세요!)
+    // ───────────────────────────────────────────
+    const results = {
+        ISTJ: { name: "현실주의자 관리자 (ISTJ)", desc: "한 번 시작한 일은 끝까지 해내는 책임감의 제왕. 논리적이고 헌신적입니다.", best: "ESFP", worst: "ENFP", img: "https://via.placeholder.com/350x250?text=ISTJ" },
+        ISFJ: { name: "용감한 수호자 (ISFJ)", desc: "성실하고 온화하며 타인을 챙기는 것을 좋아합니다. 한국인 중 가장 많은 유형!", best: "ESFP", worst: "ENTP", img: "https://via.placeholder.com/350x250?text=ISFJ" },
+        INFJ: { name: "통찰력 있는 선지자 (INFJ)", desc: "사람에 대한 깊은 통찰력을 가졌습니다. 조용하지만 내면에 열정이 가득합니다.", best: "ENFP", worst: "ESTP", img: "https://via.placeholder.com/350x250?text=INFJ" },
+        INTJ: { name: "용의주도한 전략가 (INTJ)", desc: "철저한 개인주의자이자 전략가. 상상력이 풍부하고 야망이 큽니다.", best: "ENFP", worst: "ESFP", img: "https://via.placeholder.com/350x250?text=INTJ" },
+        ISTP: { name: "만능 재주꾼 (ISTP)", desc: "상황 적응력이 뛰어나고 도구를 잘 다룹니다. '효율'을 가장 중요하게 생각합니다.", best: "ESTJ", worst: "INFP", img: "https://via.placeholder.com/350x250?text=ISTP" },
+        ISFP: { name: "겸손한 예술가 (ISFP)", desc: "다정하고 온화한 평화주의자. 침대 밖은 위험하다고 생각하는 집순이/집돌이.", best: "ESTJ", worst: "ENTJ", img: "https://via.placeholder.com/350x250?text=ISFP" },
+        INFP: { name: "열정적인 중재자 (INFP)", desc: "최악의 상황에서도 희망을 찾는 이상주의자. 감수성이 풍부하고 몽상가 기질이 있습니다.", best: "ENTJ", worst: "ESTJ", img: "https://via.placeholder.com/350x250?text=INFP" },
+        INTP: { name: "논리적인 사색가 (INTP)", desc: "지적 호기심이 넘치는 천재 유형. 평범함을 거부하고 자신만의 세계가 확고합니다.", best: "ENTJ", worst: "ESFJ", img: "https://via.placeholder.com/350x250?text=INTP" },
+        ESTP: { name: "모험을 즐기는 사업가 (ESTP)", desc: "스릴을 즐기는 에너자이저. 직설적이고 행동력이 빨라 리더 역할을 자주 맡습니다.", best: "ISFJ", worst: "INFJ", img: "https://via.placeholder.com/350x250?text=ESTP" },
+        ESFP: { name: "자유로운 영혼의 연예인 (ESFP)", desc: "주변을 밝게 만드는 분위기 메이커. 인생은 즐거워야 한다고 믿는 낙천주의자.", best: "ISFJ", worst: "INTJ", img: "https://via.placeholder.com/350x250?text=ESFP" },
+        ENFP: { name: "재기발랄한 활동가 (ENFP)", desc: "창의적이고 열정적인 인싸. 사람을 좋아하고 감정 표현이 솔직합니다.", best: "INTJ", worst: "ISTJ", img: "https://via.placeholder.com/350x250?text=ENFP" },
+        ENTP: { name: "뜨거운 논쟁을 즐기는 변론가 (ENTP)", desc: "두뇌 회전이 빠르고 논쟁을 즐깁니다. 지루한 건 딱 질색인 아이디어 뱅크.", best: "INFJ", worst: "ISFJ", img: "https://via.placeholder.com/350x250?text=ENTP" },
+        ESTJ: { name: "엄격한 관리자 (ESTJ)", desc: "사물과 사람을 관리하는 데 뛰어난 능력이 있습니다. 계획대로 움직이는 것을 선호합니다.", best: "ISFP", worst: "INFP", img: "https://via.placeholder.com/350x250?text=ESTJ" },
+        ESFJ: { name: "사교적인 외교관 (ESFJ)", desc: "타인을 돕는 데서 행복을 느끼는 친절왕. 리액션이 좋고 공감 능력이 뛰어납니다.", best: "ISFP", worst: "INTP", img: "https://via.placeholder.com/350x250?text=ESFJ" },
+        ENFJ: { name: "정의로운 사회운동가 (ENFJ)", desc: "카리스마와 충만한 열정을 지닌 타고난 리더. 사람들의 성장을 돕는 것을 좋아합니다.", best: "INFP", worst: "ISTP", img: "https://via.placeholder.com/350x250?text=ENFJ" },
+        ENTJ: { name: "대담한 통솔자 (ENTJ)", desc: "비전을 제시하고 이끄는 지도자. 목표 달성을 위해서라면 물불 가리지 않습니다.", best: "INFP", worst: "ISFP", img: "https://via.placeholder.com/350x250?text=ENTJ" }
+    };
+
+    // ───────────────────────────────────────────
+    // 3. 로직 (수정 불필요)
+    // ───────────────────────────────────────────
+    let currentStep = 0;
+    let scores = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
+
+    const screens = document.querySelectorAll('.screen');
+    const progressBar = document.querySelector('.progress-bar');
+    const qText = document.querySelector('.question-text');
+    const qCount = document.querySelector('.question-count');
+    const answerBox = document.querySelector('.answer-box');
+
+    function switchScreen(className) {
+        screens.forEach(s => s.classList.remove('active'));
+        document.querySelector(`.${className}`).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    function startQuiz() {
+        switchScreen('quiz-screen');
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentStep];
+        const progress = ((currentStep) / questions.length) * 100;
+        
+        progressBar.style.width = `${progress}%`;
+        qCount.innerText = `${currentStep + 1} / ${questions.length}`;
+        qText.innerText = q.q;
+        
+        answerBox.innerHTML = ''; // 초기화
+        
+        // 버튼 A
+        const btnA = document.createElement('button');
+        btnA.className = 'answer-btn fade-in';
+        btnA.innerText = q.a;
+        btnA.onclick = () => selectAnswer(q.type[0]); // 첫번째 글자 타입 점수 증가
+        
+        // 버튼 B
+        const btnB = document.createElement('button');
+        btnB.className = 'answer-btn fade-in';
+        btnB.innerText = q.b;
+        btnB.onclick = () => selectAnswer(q.type[1]); // 두번째 글자 타입 점수 증가
+
+        answerBox.appendChild(btnA);
+        answerBox.appendChild(btnB);
+    }
+
+    function selectAnswer(type) {
+        scores[type]++;
+        currentStep++;
+        
+        if (currentStep < questions.length) {
+            showQuestion();
+        } else {
+            showLoading();
+        }
+    }
+
+    function showLoading() {
+        switchScreen('loading-screen');
+        // 2.5초 로딩 (광고 노출 시간 확보)
+        setTimeout(calculateResult, 2500);
+    }
+
+    function calculateResult() {
+        const mbti = 
+            (scores.E > scores.I ? 'E' : 'I') +
+            (scores.S > scores.N ? 'S' : 'N') +
+            (scores.T > scores.F ? 'T' : 'F') +
+            (scores.J > scores.P ? 'J' : 'P');
+        
+        const data = results[mbti];
+        
+        document.querySelector('.result-name').innerText = data.name;
+        document.querySelector('.desc-box').innerText = data.desc;
+        document.querySelector('#result-img-placeholder').src = data.img;
+        document.querySelector('#best-match').innerText = data.best;
+        document.querySelector('#worst-match').innerText = data.worst;
+        
+        switchScreen('result-screen');
+    }
+
+    function copyLink() {
+        const url = window.location.href;
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        tempInput.value = url;
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert('링크가 복사되었습니다! 친구들에게 공유해보세요.');
+    }
+</script>
