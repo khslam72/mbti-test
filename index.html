@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta name="google-site-verification" content="LLkhIMH-zYgNJuFQ7aUCV5nApY_EB7QHG02mZC6zWOA" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2831316027210927"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>2025 한국인 맞춤 성향 분석 테스트 (무료 정밀 진단)</title>
-    <meta name="description" content="AI 기반 알고리즘으로 분석하는 소름 돋는 성향 테스트! 나의 MBTI 성격 유형과 숨겨진 능력을 3분 만에 알아보세요. 100% 무료, 별도 가입 없음.">
-    <meta name="keywords" content="MBTI테스트, 성향테스트, 무료MBTI, 성격유형검사, 심리테스트, 한국인MBTI, wisehub">
-    <meta name="author" content="WiseHub">
-    <meta name="robots" content="index, follow">
+    <title>소름 돋는 성향 분석 MBTI테스트 (AI 정밀 진단) - 2025 최신판</title>
+    <meta name="description" content="남들은 절대 모르는 나의 무의식까지? 😱 빅데이터로 분석한 소름 돋는 성향 테스트! 당신의 진짜 성격과 숨겨진 잠재력을 3분 만에 확인해보세요. (100% 무료)">
+    <meta name="keywords" content="MBTI테스트, 성격유형검사, 무료심리테스트, 소름돋는심리테스트, MBTI궁합, 연애심리테스트, AI성향분석, 성격테스트, 숨겨진본캐찾기, 정확한MBTI, wisehub">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mbti.wisehub.kr">
-    <meta property="og:title" content="소름 돋는 성향 분석 테스트 🧐">
+    <meta property="og:title" content="내 성격이 이렇다고..? 소름 돋는 성향 분석 결과 ㄷㄷ">
     <meta property="og:description" content="AI도 놀란 정확도! 나랑 찰떡 궁합인 친구는 누구일까? 지금 바로 확인해보세요.">
     <meta property="og:image" content="https://mbti.wisehub.kr/images/main.webp">
     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000"
+     crossorigin="anonymous"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -34,9 +32,6 @@
       "description": "24개 문항으로 알아보는 초정밀 성향 분석 테스트입니다."
     }
     </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000"
-     crossorigin="anonymous"></script>
 
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -72,11 +67,27 @@
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 화면 공통 */
+        /* 제목 강조용 형광펜 효과 */
+        .highlight {
+            background: linear-gradient(to top, #ffeb3b 40%, transparent 40%);
+            padding: 0 5px;
+        }
+        
+        /* 시작 버튼이 쿵쿵 뛰는 애니메이션 (시선 강탈) */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
+        }
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* 화면 관리 (SPA 방식) */
         .screen { display: none; }
         .screen.active { display: block; }
 
-        /* 광고 영역 스타일 */
+        /* 광고 영역 디자인 */
         .ad-area { 
             width: 100%; 
             background: #f1f2f6; 
@@ -87,9 +98,11 @@
             margin: 20px 0; 
             border-radius: 8px;
             overflow: hidden;
+            color: #ccc;
+            font-size: 12px;
         }
 
-        /* 1. 시작 화면 */
+        /* 1. 시작 화면 디자인 */
         .start-screen { text-align: center; }
         .main-img { width: 100%; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .start-title { font-size: 24px; font-weight: 800; margin-bottom: 10px; color: var(--text-color); line-height: 1.3; }
@@ -125,7 +138,7 @@
 
         .start-desc { font-size: 15px; color: #636e72; margin-bottom: 20px; line-height: 1.6; }
 
-        /* 2. 퀴즈 화면 */
+        /* 2. 퀴즈 화면 디자인 */
         .quiz-screen { padding-top: 10px; }
         .progress-container { width: 100%; height: 8px; background-color: var(--bar-bg); border-radius: 10px; margin-bottom: 30px; overflow: hidden; }
         .progress-bar { height: 100%; background-color: var(--primary-color); width: 0%; transition: width 0.3s ease; }
@@ -155,14 +168,14 @@
             transform: translateY(-2px);
         }
 
-        /* 3. 로딩 & 전면 광고 트리거 */
+        /* 3. 로딩 & 전면 광고 트리거 디자인 */
         .loading-screen, .interstitial-screen { text-align: center; padding-top: 60px; }
         .spinner { width: 50px; height: 50px; border: 5px solid #eee; border-top-color: var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         
         .inter-msg { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
 
-        /* 4. 결과 화면 */
+        /* 4. 결과 화면 디자인 */
         .result-screen { text-align: center; }
         .result-subtitle { font-size: 16px; color: var(--primary-color); font-weight: 700; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; }
         .result-name { font-size: 26px; font-weight: 900; margin-bottom: 20px; color: #2d3436; line-height: 1.3; }
@@ -179,7 +192,7 @@
         .good-match { color: #e84393; }
         .bad-match { color: #636e72; }
 
-        /* 버튼 공통 */
+        /* 버튼 디자인 */
         .btn-primary {
             background: linear-gradient(45deg, #6c5ce7, #a29bfe);
             color: white;
@@ -208,29 +221,27 @@
 
 <div id="pro-test-wrapper">
 
-<div class="screen start-screen active">
+    <div class="screen start-screen active">
         <div class="ad-area">
-           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2831316027210927"
-     crossorigin="anonymous"></script>
-<!-- mbti -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2831316027210927"
-     data-ad-slot="3454851236"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-        </div>
+            <p>광고 영역 (상단)</p>
+            </div>
 
-        <h1 class="start-title">🇰🇷 2025 한국인 맞춤<br>성향 분석 테스트</h1>
+        <h1 class="start-title">
+            AI도 놀란 소름 돋는 정확도!<br>
+            나의 <span class="highlight">숨겨진 본캐</span> 찾기
+        </h1>
         
         <img src="./images/main.webp" alt="MBTI 성향 테스트 메인" class="main-img">
         
-        <button class="btn-primary" onclick="startQuiz()" style="margin-top: 10px; margin-bottom: 20px;">테스트 시작하기</button>
+        <button class="btn-primary btn-pulse" onclick="startQuiz()" style="margin-top: 10px; margin-bottom: 20px;">
+            👉 내 성향 분석하러 가기
+        </button>
 
-        <p class="start-desc">AI도 놀란 정확도!<br>24개 문항으로 나의 진짜 성격과<br>숨겨진 능력을 알아보세요.</p>
+        <p class="start-desc">
+            "이거 완전 내 얘기 아냐?" 😲<br>
+            24개의 질문으로 알아보는<br>
+            <b>나의 소름 돋는 진짜 모습</b>을 발견하세요.
+        </p>
         
         <section class="intro-box">
             <h3 class="intro-title">📌 정밀 분석 기준</h3>
@@ -241,16 +252,17 @@
                 <li><strong>J / P</strong> : 생활 양식 (판단 vs 인식)</li>
             </ul>
         </section>
-        
+
         <article class="seo-text">
             <strong>이 테스트의 특징:</strong><br>
             본 성향 분석 테스트는 MBTI 이론을 기반으로 한국인의 정서에 맞게 재해석된 심리 테스트입니다. ISTJ, ENFP 등 16가지 성격 유형과 최고의 궁합, 최악의 궁합을 무료로 분석해 드립니다. 별도의 회원가입 없이 3분 만에 결과를 확인해보세요.
         </article>
 
         <div class="ad-area">
-            <p style="color:#ccc; font-size:12px;">광고 영역 (하단)</p>
-        </div>
+            <p>광고 영역 (하단)</p>
+            </div>
     </div>
+
     <div class="screen quiz-screen">
         <div class="progress-container">
             <div class="progress-bar"></div>
@@ -300,8 +312,8 @@
         </div>
 
         <div class="ad-area">
-            <p style="color:#ccc; font-size:12px;">광고 영역 (결과)</p>
-        </div>
+            <p>광고 영역 (결과)</p>
+            </div>
 
         <button class="btn-primary" onclick="location.reload()">테스트 다시하기</button>
         
@@ -318,7 +330,7 @@
         { q: "주말에 약속이 취소되었다. 나의 기분은?", a: "아쉽지만, 집에서 쉴 수 있어서 내심 좋다.", b: "시간이 붕 떴네? 다른 친구에게 연락해본다.", type: "IE" },
         { q: "비행기 이륙 직전, 창밖을 보며 하는 생각은?", a: "와, 뜬다. 저 건물들 되게 작아 보이네.", b: "이 쇳덩이가 어떻게 뜨지? 추락하면 어떡하지?", type: "SN" },
         { q: "친구가 '나 우울해서 화분 샀어'라고 했다.", a: "우울했구나.. 무슨 일 있어? (공감)", b: "오 무슨 화분 샀어? 얼마야? (사실)", type: "FT" },
-        { q: "여행 갈 때 나의 계획표는?", a: "엑셀 파일에 분 단위 동선과 맛집 리스트 정리.", b: "숙소랑 비행기만 예약. 나머지는 가서 생각한다.", type: "JP" },
+        { q: "여행 갈 때 나의 계획표는?", a: "엑셀 파일에 분 단위 동선과 맛집 리스트 정리.", b: "일단 숙소랑 비행기만 예약. 나머지는 가서 생각한다.", type: "JP" },
         { q: "엘리베이터에 어색한 이웃과 단둘이 탔다.", a: "휴대폰만 보거나 층수만 쳐다본다.", b: "안녕하세요~ 날씨 춥죠? (스몰톡 시도)", type: "IE" },
         { q: "멍 때릴 때 내 머릿속은?", a: "오늘 저녁 뭐 먹지? 내일 뭐 입지?", b: "좀비 사태가 일어나면 어디로 숨지?", type: "SN" },
         { q: "친구가 차 사고가 났다고 전화가 왔다.", a: "헐 다친 데는 없어? 많이 놀랐겠다ㅠㅠ", b: "보험사는 불렀어? 과실 비율은?", type: "FT" },
@@ -341,7 +353,7 @@
         { q: "식당 메뉴 고를 때 나는?", a: "이미 먹고 싶은 메뉴를 정하고 왔다.", b: "가서 땡기는 거나 추천 메뉴를 먹는다.", type: "JP" }
     ];
 
-    // 2. 결과 데이터 (WebP 적용됨)
+    // 2. 결과 데이터 (images 폴더 경로 + WebP 포맷)
     const results = {
         ISTJ: { 
             name: "현실주의자 관리자 (ISTJ)", 
@@ -403,56 +415,56 @@
             name: "모험을 즐기는 사업가 (ESTP)", 
             desc: "스릴을 즐기는 에너자이저. 직설적이고 행동력이 빨라 리더 역할을 자주 맡습니다.", 
             img: "./images/estp.webp",
-            best: "ISFJ", bestWhy: "당신이 벌려놓은 일들을 꼼꼼하게 챙겨주는 보완적인 관계.",
+            best: "ISFJ", worstWhy: "당신이 벌려놓은 일들을 꼼꼼하게 챙겨주는 보완적인 관계.",
             worst: "INFJ", worstWhy: "지나치게 진지하고 철학적인 대화를 답답해할 수 있습니다."
         },
         ESFP: { 
             name: "자유로운 영혼의 연예인 (ESFP)", 
             desc: "주변을 밝게 만드는 분위기 메이커. 인생은 즐거워야 한다고 믿는 낙천주의자.", 
             img: "./images/esfp.webp",
-            best: "ISFJ", bestWhy: "당신이 사고를 치면 수습해주는 든든한 지원군입니다.",
+            best: "ISFJ", worstWhy: "당신이 사고를 치면 수습해주는 든든한 지원군입니다.",
             worst: "INTJ", worstWhy: "분석적인 잔소리가 당신의 흥을 다 깨버릴 수 있습니다."
         },
         ENFP: { 
             name: "재기발랄한 활동가 (ENFP)", 
             desc: "창의적이고 열정적인 인싸. 사람을 좋아하고 감정 표현이 솔직합니다.", 
             img: "./images/enfp.webp",
-            best: "INTJ", bestWhy: "당신이 들이대고 상대가 튕기면서도 은근히 좋아하는 조합.",
+            best: "INTJ", worstWhy: "당신이 들이대고 상대가 튕기면서도 은근히 좋아하는 조합.",
             worst: "ISTJ", worstWhy: "틀에 박힌 규칙과 자유로운 영혼은 사사건건 부딪칩니다."
         },
         ENTP: { 
             name: "뜨거운 논쟁을 즐기는 변론가 (ENTP)", 
             desc: "두뇌 회전이 빠르고 논쟁을 즐깁니다. 지루한 건 딱 질색인 아이디어 뱅크.", 
             img: "./images/entp.webp",
-            best: "INFJ", bestWhy: "겉으론 달라 보이지만 서로의 이상한 점을 누구보다 잘 이해합니다.",
+            best: "INFJ", worstWhy: "겉으론 달라 보이지만 서로의 이상한 점을 누구보다 잘 이해합니다.",
             worst: "ISFJ", worstWhy: "전통을 중시하는 상대에게 당신의 도발은 고통입니다."
         },
         ESTJ: { 
             name: "엄격한 관리자 (ESTJ)", 
             desc: "사물과 사람을 관리하는 데 뛰어난 능력이 있습니다. 계획대로 움직이는 것을 선호합니다.", 
             img: "./images/estj.webp",
-            best: "ISFP", bestWhy: "당신의 듬직한 리더십이 상대에게 큰 안정감을 줍니다.",
+            best: "ISFP", worstWhy: "당신의 듬직한 리더십이 상대에게 큰 안정감을 줍니다.",
             worst: "INFP", worstWhy: "감정적인 호소를 비효율적이라 생각하여 갈등이 생깁니다."
         },
         ESFJ: { 
             name: "사교적인 외교관 (ESFJ)", 
             desc: "타인을 돕는 데서 행복을 느끼는 친절왕. 리액션이 좋고 공감 능력이 뛰어납니다.", 
             img: "./images/esfj.webp",
-            best: "ISFP", bestWhy: "서로 감정을 잘 챙겨주고 싸울 일이 거의 없는 평화로운 커플.",
+            best: "ISFP", worstWhy: "서로 감정을 잘 챙겨주고 싸울 일이 거의 없는 평화로운 커플.",
             worst: "INTP", worstWhy: "논리만 따지는 차가운 모습에 상처받기 쉽습니다."
         },
         ENFJ: { 
             name: "정의로운 사회운동가 (ENFJ)", 
             desc: "카리스마와 충만한 열정을 지닌 타고난 리더. 사람들의 성장을 돕는 것을 좋아합니다.", 
             img: "./images/enfj.webp",
-            best: "INFP", bestWhy: "서로의 가치관을 존중하며 영혼의 대화를 나눌 수 있습니다.",
+            best: "INFP", worstWhy: "서로의 가치관을 존중하며 영혼의 대화를 나눌 수 있습니다.",
             worst: "ISTP", worstWhy: "타인에게 무관심한 개인주의적 성향을 이해하기 힘듭니다."
         },
         ENTJ: { 
             name: "대담한 통솔자 (ENTJ)", 
             desc: "비전을 제시하고 이끄는 지도자. 목표 달성을 위해서라면 물불 가리지 않습니다.", 
             img: "./images/entj.webp",
-            best: "INFP", bestWhy: "당신의 야망을 묵묵히 내조하며 지지해주는 관계입니다.",
+            best: "INFP", worstWhy: "당신의 야망을 묵묵히 내조하며 지지해주는 관계입니다.",
             worst: "ISFP", worstWhy: "성취 지향적인 당신에게 여유로운 모습은 게을러 보입니다."
         }
     };
@@ -520,6 +532,7 @@
     }
 
     function showResultWithAd() {
+        // 전면 광고 트리거가 작동하는 포인트 (애드센스 자동광고가 알아서 처리)
         calculateResult();
     }
 
