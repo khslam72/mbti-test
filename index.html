@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://mbti.wisehub.kr">
     <meta property="og:title" content="소름 돋는 성향 분석 테스트 🧐">
     <meta property="og:description" content="AI도 놀란 정확도! 나랑 찰떡 궁합인 친구는 누구일까? 지금 바로 확인해보세요.">
-    <meta property="og:image" content="https://mbti.wisehub.kr/main.jpg">
+    <meta property="og:image" content="https://mbti.wisehub.kr/images/main.webp">
     
     <script type="application/ld+json">
     {
@@ -212,7 +212,7 @@
 
         <h1 class="start-title">🇰🇷 2025 한국인 맞춤<br>성향 분석 테스트</h1>
         
-        <img src="./main.jpg" alt="MBTI 성향 테스트 메인" class="main-img">
+        <img src="./images/main.webp" alt="MBTI 성향 테스트 메인" class="main-img">
         
         <section class="intro-box">
             <h3 class="intro-title">📌 정밀 분석 기준</h3>
@@ -227,6 +227,7 @@
         <p class="start-desc">AI도 놀란 정확도!<br>24개 문항으로 나의 진짜 성격과<br>숨겨진 능력을 알아보세요.</p>
         
         <button class="btn-primary" onclick="startQuiz()">테스트 시작하기</button>
+        
         <article class="seo-text">
             <strong>이 테스트의 특징:</strong><br>
             본 성향 분석 테스트는 MBTI 이론을 기반으로 한국인의 정서에 맞게 재해석된 심리 테스트입니다. ISTJ, ENFP 등 16가지 성격 유형과 최고의 궁합, 최악의 궁합을 무료로 분석해 드립니다. 별도의 회원가입 없이 3분 만에 결과를 확인해보세요.
@@ -327,117 +328,117 @@
         { q: "식당 메뉴 고를 때 나는?", a: "이미 먹고 싶은 메뉴를 정하고 왔다.", b: "가서 땡기는 거나 추천 메뉴를 먹는다.", type: "JP" }
     ];
 
-    // 2. 결과 데이터 (이미지 경로: ./istj.jpg 등)
+    // 2. 결과 데이터 (WebP 적용됨)
     const results = {
         ISTJ: { 
             name: "현실주의자 관리자 (ISTJ)", 
             desc: "한 번 시작한 일은 끝까지 해내는 책임감의 제왕. 논리적이고 헌신적입니다.", 
-            img: "./istj.jpg",
+            img: "./images/istj.webp",
             best: "ESFP", bestWhy: "계획적인 당신에게 ESFP의 밝은 에너지가 활력을 줍니다.",
             worst: "ENFP", worstWhy: "지나친 자유분방함은 당신에게 스트레스가 됩니다."
         },
         ISFJ: { 
             name: "용감한 수호자 (ISFJ)", 
             desc: "성실하고 온화하며 타인을 챙기는 것을 좋아합니다. 한국인 중 가장 많은 유형!", 
-            img: "./isfj.jpg",
+            img: "./images/isfj.webp",
             best: "ESFP", bestWhy: "서로를 배려하는 따뜻한 마음씨가 잘 맞아 안정적입니다.",
             worst: "ENTP", worstWhy: "ENTP의 논쟁 즐기기는 평화주의자인 당신에게 상처가 됩니다."
         },
         INFJ: { 
             name: "통찰력 있는 선지자 (INFJ)", 
             desc: "사람에 대한 깊은 통찰력을 가졌습니다. 조용하지만 내면에 열정이 가득합니다.", 
-            img: "./infj.jpg",
+            img: "./images/infj.webp",
             best: "ENFP", bestWhy: "당신의 깊은 내면을 ENFP가 긍정적인 호기심으로 이해해줍니다.",
             worst: "ESTP", worstWhy: "현실적이고 직설적인 성향과 대화 코드가 잘 안 맞습니다."
         },
         INTJ: { 
             name: "용의주도한 전략가 (INTJ)", 
             desc: "철저한 개인주의자이자 전략가. 상상력이 풍부하고 야망이 큽니다.", 
-            img: "./intj.jpg",
+            img: "./images/intj.webp",
             best: "ENFP", bestWhy: "차가운 당신을 무장해제 시키는 유일한 댕댕이 같은 존재.",
             worst: "ESFP", worstWhy: "즉흥적인 파티를 즐기는 성향과 혼자만의 시간은 상극입니다."
         },
         ISTP: { 
             name: "만능 재주꾼 (ISTP)", 
             desc: "상황 적응력이 뛰어나고 도구를 잘 다룹니다. '효율'을 가장 중요하게 생각합니다.", 
-            img: "./istp.jpg",
+            img: "./images/istp.webp",
             best: "ESTJ", bestWhy: "둘 다 감정 소모 없이 깔끔하고 효율적인 일 처리를 선호합니다.",
             worst: "INFP", worstWhy: "감성적인 호소를 이해하기 힘들어 답답함을 느낍니다."
         },
         ISFP: { 
             name: "겸손한 예술가 (ISFP)", 
             desc: "다정하고 온화한 평화주의자. 침대 밖은 위험하다고 생각하는 집순이/집돌이.", 
-            img: "./isfp.jpg",
+            img: "./images/isfp.webp",
             best: "ESTJ", bestWhy: "리드해주는 상대 덕분에 결정장애 없이 편안함을 느낍니다.",
             worst: "ENTJ", worstWhy: "강압적인 태도와 효율 중시는 당신을 숨게 만듭니다."
         },
         INFP: { 
             name: "열정적인 중재자 (INFP)", 
             desc: "최악의 상황에서도 희망을 찾는 이상주의자. 감수성이 풍부하고 몽상가 기질이 있습니다.", 
-            img: "./infp.jpg",
+            img: "./images/infp.webp",
             best: "ENTJ", bestWhy: "당신의 상상력을 현실로 만들어주는 환상의 짝꿍입니다.",
             worst: "ESTJ", worstWhy: "팩트 폭격과 현실적인 지적은 유리멘탈에 치명적입니다."
         },
         INTP: { 
             name: "논리적인 사색가 (INTP)", 
             desc: "지적 호기심이 넘치는 천재 유형. 평범함을 거부하고 자신만의 세계가 확고합니다.", 
-            img: "./intp.jpg",
+            img: "./images/intp.webp",
             best: "ENTJ", bestWhy: "지적인 대화가 통하며, 서로의 능력을 인정해주는 관계입니다.",
             worst: "ESFJ", worstWhy: "친목 도모와 오지랖을 중요시하는 성향이 부담스럽습니다."
         },
         ESTP: { 
             name: "모험을 즐기는 사업가 (ESTP)", 
             desc: "스릴을 즐기는 에너자이저. 직설적이고 행동력이 빨라 리더 역할을 자주 맡습니다.", 
-            img: "./estp.jpg",
+            img: "./images/estp.webp",
             best: "ISFJ", bestWhy: "당신이 벌려놓은 일들을 꼼꼼하게 챙겨주는 보완적인 관계.",
             worst: "INFJ", worstWhy: "지나치게 진지하고 철학적인 대화를 답답해할 수 있습니다."
         },
         ESFP: { 
             name: "자유로운 영혼의 연예인 (ESFP)", 
             desc: "주변을 밝게 만드는 분위기 메이커. 인생은 즐거워야 한다고 믿는 낙천주의자.", 
-            img: "./esfp.jpg",
+            img: "./images/esfp.webp",
             best: "ISFJ", bestWhy: "당신이 사고를 치면 수습해주는 든든한 지원군입니다.",
             worst: "INTJ", worstWhy: "분석적인 잔소리가 당신의 흥을 다 깨버릴 수 있습니다."
         },
         ENFP: { 
             name: "재기발랄한 활동가 (ENFP)", 
             desc: "창의적이고 열정적인 인싸. 사람을 좋아하고 감정 표현이 솔직합니다.", 
-            img: "./enfp.jpg",
+            img: "./images/enfp.webp",
             best: "INTJ", bestWhy: "당신이 들이대고 상대가 튕기면서도 은근히 좋아하는 조합.",
             worst: "ISTJ", worstWhy: "틀에 박힌 규칙과 자유로운 영혼은 사사건건 부딪칩니다."
         },
         ENTP: { 
             name: "뜨거운 논쟁을 즐기는 변론가 (ENTP)", 
             desc: "두뇌 회전이 빠르고 논쟁을 즐깁니다. 지루한 건 딱 질색인 아이디어 뱅크.", 
-            img: "./entp.jpg",
+            img: "./images/entp.webp",
             best: "INFJ", bestWhy: "겉으론 달라 보이지만 서로의 이상한 점을 누구보다 잘 이해합니다.",
             worst: "ISFJ", worstWhy: "전통을 중시하는 상대에게 당신의 도발은 고통입니다."
         },
         ESTJ: { 
             name: "엄격한 관리자 (ESTJ)", 
             desc: "사물과 사람을 관리하는 데 뛰어난 능력이 있습니다. 계획대로 움직이는 것을 선호합니다.", 
-            img: "./estj.jpg",
+            img: "./images/estj.webp",
             best: "ISFP", bestWhy: "당신의 듬직한 리더십이 상대에게 큰 안정감을 줍니다.",
             worst: "INFP", worstWhy: "감정적인 호소를 비효율적이라 생각하여 갈등이 생깁니다."
         },
         ESFJ: { 
             name: "사교적인 외교관 (ESFJ)", 
             desc: "타인을 돕는 데서 행복을 느끼는 친절왕. 리액션이 좋고 공감 능력이 뛰어납니다.", 
-            img: "./esfj.jpg",
+            img: "./images/esfj.webp",
             best: "ISFP", bestWhy: "서로 감정을 잘 챙겨주고 싸울 일이 거의 없는 평화로운 커플.",
             worst: "INTP", worstWhy: "논리만 따지는 차가운 모습에 상처받기 쉽습니다."
         },
         ENFJ: { 
             name: "정의로운 사회운동가 (ENFJ)", 
             desc: "카리스마와 충만한 열정을 지닌 타고난 리더. 사람들의 성장을 돕는 것을 좋아합니다.", 
-            img: "./enfj.jpg",
+            img: "./images/enfj.webp",
             best: "INFP", bestWhy: "서로의 가치관을 존중하며 영혼의 대화를 나눌 수 있습니다.",
             worst: "ISTP", worstWhy: "타인에게 무관심한 개인주의적 성향을 이해하기 힘듭니다."
         },
         ENTJ: { 
             name: "대담한 통솔자 (ENTJ)", 
             desc: "비전을 제시하고 이끄는 지도자. 목표 달성을 위해서라면 물불 가리지 않습니다.", 
-            img: "./entj.jpg",
+            img: "./images/entj.webp",
             best: "INFP", bestWhy: "당신의 야망을 묵묵히 내조하며 지지해주는 관계입니다.",
             worst: "ISFP", worstWhy: "성취 지향적인 당신에게 여유로운 모습은 게을러 보입니다."
         }
@@ -500,15 +501,12 @@
 
     function showLoading() {
         switchScreen('loading-screen');
-        // 로딩 시간 2초 후 전면 광고 트리거 화면으로 이동
         setTimeout(() => {
             switchScreen('interstitial-screen');
         }, 2000);
     }
 
-    // 전면 광고 트리거 로직
     function showResultWithAd() {
-        // 사용자가 클릭하는 순간 페이지 이동과 같은 효과를 주어 애드센스 자동 광고(전면)가 뜨도록 유도
         calculateResult();
     }
 
